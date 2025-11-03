@@ -221,10 +221,6 @@ Then, in the web app:
 
 You can repeat this process for any other MCP agent you build in the future.
 
-```
-```
-Then send message “I’m tired” → instant wellness response 🌱
-
 ---
 
 ## 💻 Usage Flow
