@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/NiccoloBalestrieri/naturaai-wellness-bot/main/public/logo.png" alt="Natura AI logo" width="80"/>
-
 # 🌿 Natura AI – Digital Wellness Coach
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -16,7 +14,11 @@
 ---
 
 ## 🎥 Demo  
-👉 https://github.com/user-attachments/assets/85ca0262-41fd-4798-802e-2ac9157cb58d
+<div align="center">
+  <video src="https://github.com/user-attachments/assets/85ca0262-41fd-4798-802e-2ac9157cb58d" width="600" controls>
+  </video>
+</div>
+
 
 
 
