@@ -661,6 +661,7 @@ export default function ChatbotApp() {
             </p>
           </div>
         </div>
+        
       </div>
 
       {/* Overlay per chiudere sidebar su mobile */}
