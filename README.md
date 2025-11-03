@@ -16,7 +16,9 @@
 ---
 
 ## 🎥 Demo  
-👉 *Add your video demo link here (YouTube or Cloudflare Stream).*  
+👉 https://github.com/user-attachments/assets/85ca0262-41fd-4798-802e-2ac9157cb58d
+
+
 
 ---
 
@@ -115,15 +117,6 @@ Then send message “I’m tired” → instant wellness respons
    - “Activate focus mode” → focus tool  
    - “I want to feel connected with others” → connection advice  
 5. Enjoy instant tool responses or LLM fallback.
-
----
-
-## 📸 Screenshots  
-| Feature | Preview |
-|----------|----------|
-| **Login Screen** | ![Login](docs/screenshot-login.png) |
-| **Chat UI** | ![Chat](docs/screenshot-chat.png) |
-| **MCP Servers Panel** | ![MCP Panel](docs/screenshot-mcp.png) |
 
 ---
 
