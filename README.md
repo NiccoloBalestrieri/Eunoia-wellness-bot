@@ -1,10 +1,22 @@
-# 🌿 Natura AI – Digital Wellness Coach  
+<div align="center">
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  
-[![Built with React](https://img.shields.io/badge/React-18‑LTS-blue.svg)](https://reactjs.org/)  
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind‑CSS-v3.3‑green.svg)](https://tailwindcss.com/)  
-[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare%20Workers-serverless‑purple.svg)](https://workers.cloudflare.com/)  
-[![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL%20&%20Auth‑teal.svg)](https://supabase.com/)  
+<img src="https://raw.githubusercontent.com/NiccoloBalestrieri/naturaai-wellness-bot/main/public/logo.png" alt="Natura AI logo" width="80"/>
+
+# 🌿 Natura AI – Digital Wellness Coach
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+![React](https://img.shields.io/badge/React-18--LTS-61DAFB?logo=react&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?logo=tailwindcss&logoColor=white)
+![Cloudflare Workers](https://img.shields.io/badge/Cloudflare_Workers-F38020?logo=cloudflare&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white)
+
+</div>
+
+
+---
+
+## 🎥 Demo  
+👉 *Add your video demo link here (YouTube or Cloudflare Stream).*  
 
 ---
 
@@ -118,18 +130,17 @@ Then send message “I’m tired” → instant wellness respons
 ## 📜 Changelog  
 | Version | Date | Changes |
 |---------|------|----------|
-| **v0.1.0** | 2025‑11‑03 | Initial release – chat, auth, MCP integration. |
-| **v0.1.1** | 2025‑11‑04 | UI improvements + added tool discovery panel. |
-| **v0.2.0** | 2025‑11‑05 | Implemented Wellness Coach MCP server + focus mode. |
+| **v0.1.0** | 2025‑11‑02 | Initial release – chat, auth, MCP integration. |
+| **v0.1.1** | 2025‑11‑02 | UI improvements + added tool discovery panel. |
+| **v0.2.0** | 2025‑11‑03 | Implemented Wellness Coach MCP server + focus mode. |
 
 ---
 
-## 🔮 Future Roadmap  
-- Personalized screen‑time tracking & analytics  
+## 🔮 Future Roadmap   
 - Integration with wearables (Google Fit / Apple Health)  
-- Voice‑based mindfulness prompts  
 - MCP Marketplace for external tools  
 - Enhanced LLM context awareness
+- Email confermartion signup
 
 ---
 
@@ -138,11 +149,6 @@ Then send message “I’m tired” → instant wellness respons
 - No sensitive data stored client‑side except token and chat history.  
 - CORS & rate‑limiting implemented on Workers.  
 - All requests served over HTTPS via Cloudflare.
-
----
-
-## 🎥 Demo  
-👉 *Add your video demo link here (YouTube or Cloudflare Stream).*  
 
 ---
 
