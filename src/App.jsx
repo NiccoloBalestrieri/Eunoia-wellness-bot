@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-// Iconcine locali al posto di lucide-react (lucide-react dava errore nel deploy)
+// Icone locali
 const Icon = ({ children, className }) => (
   <span className={className}>{children}</span>
 );
@@ -9,11 +9,10 @@ const Send = (props) => <Icon {...props}>➤</Icon>;
 const Plus = (props) => <Icon {...props}>＋</Icon>;
 const Settings = (props) => <Icon {...props}>⚙️</Icon>;
 const LogOut = (props) => <Icon {...props}>⇦</Icon>;
-const Loader2 = ({ className }) => (
-  <span className={className}>⟳</span>   // aggiungere "animate-spin" se vuoi animarla
-);
+const Loader2 = ({ className }) => <span className={className}>⟳</span>;
 const X = (props) => <Icon {...props}>✕</Icon>;
 const Trash2 = (props) => <Icon {...props}>🗑️</Icon>;
+const Menu = (props) => <Icon {...props}>☰</Icon>;
 
 const API_URL = 'https://nicbl.niccolobalestrieri2.workers.dev';
 
@@ -45,6 +44,7 @@ export default function ChatbotApp() {
   const [mcpServers, setMcpServers] = useState([]);
   const [mcpName, setMcpName] = useState('');
   const [mcpUrl, setMcpUrl] = useState('');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const messagesEndRef = useRef(null);
   const textareaRef = useRef(null);
@@ -150,6 +150,7 @@ export default function ChatbotApp() {
     
     setChats(prev => ({ ...prev, [id]: newChat }));
     setActiveChat(id);
+    setIsMobileMenuOpen(false); // Chiudi menu mobile dopo selezione
   };
 
   const deleteChat = (id, e) => {
@@ -213,6 +214,7 @@ export default function ChatbotApp() {
     setActiveChat(null);
     setInput('');
     setSending(false);
+    setIsMobileMenuOpen(false);
   };
 
   const loadMCPServers = async (authToken) => {
@@ -360,7 +362,7 @@ export default function ChatbotApp() {
             <p className="text-gray-400">Log in or create your account to continue</p>
           </div>
 
-          <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-8">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-6 md:p-8">
             <div className="space-y-5">
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-2">
@@ -424,10 +426,27 @@ export default function ChatbotApp() {
   }
 
   return (
-    <div className="h-screen overflow-hidden bg-black text-white flex">
-      <div className="w-64 bg-black border-r border-zinc-800 flex flex-col">
+    <div className="h-screen overflow-hidden bg-black text-white flex flex-col md:flex-row">
+      {/* Mobile Header */}
+      <div className="md:hidden flex items-center justify-between p-4 border-b border-zinc-800">
+        <div className="flex items-center gap-3">
+          <NaturaLogo className="h-6 w-6 text-white" />
+          <span className="text-lg font-semibold">Natura AI</span>
+        </div>
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="p-2 hover:bg-zinc-800 rounded transition"
+        >
+          <Menu className="w-6 h-6" />
+        </button>
+      </div>
+
+      {/* Sidebar - Desktop sempre visibile, Mobile solo se aperto */}
+      <div className={`${
+        isMobileMenuOpen ? 'flex' : 'hidden'
+      } md:flex w-full md:w-64 bg-black border-r border-zinc-800 flex-col absolute md:relative z-50 h-full md:h-auto`}>
         <div className="p-4 border-b border-zinc-800">
-          <div className="flex items-center gap-3 mb-4">
+          <div className="hidden md:flex items-center gap-3 mb-4">
             <NaturaLogo className="h-7 w-7 text-white" />
             <span className="text-lg font-semibold">Natura AI</span>
           </div>
@@ -448,7 +467,10 @@ export default function ChatbotApp() {
           {Object.entries(chats).map(([id, chat]) => (
             <div
               key={id}
-              onClick={() => setActiveChat(id)}
+              onClick={() => {
+                setActiveChat(id);
+                setIsMobileMenuOpen(false); // Chiudi menu su mobile
+              }}
               className={`group flex items-center justify-between px-3 py-2.5 rounded-lg cursor-pointer text-sm transition ${
                 id === activeChat
                   ? 'bg-zinc-800 text-white'
@@ -471,7 +493,10 @@ export default function ChatbotApp() {
 
         <div className="p-3 border-t border-zinc-800 space-y-2">
           <button
-            onClick={() => setShowMCP(!showMCP)}
+            onClick={() => {
+              setShowMCP(!showMCP);
+              setIsMobileMenuOpen(false);
+            }}
             className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-zinc-900 transition text-sm text-gray-300"
           >
             <Settings className="w-4 h-4" />
@@ -490,10 +515,12 @@ export default function ChatbotApp() {
         </div>
       </div>
 
+      {/* Main Content */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+        {/* MCP Panel */}
         {showMCP && (
           <div className="border-b border-zinc-800 bg-zinc-900/50 backdrop-blur flex-shrink-0">
-            <div className="max-w-3xl mx-auto px-6 py-4">
+            <div className="max-w-3xl mx-auto px-4 md:px-6 py-4">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-sm font-semibold text-white">MCP Servers</h3>
                 <button onClick={() => setShowMCP(false)} className="text-gray-400 hover:text-white">
@@ -501,7 +528,7 @@ export default function ChatbotApp() {
                 </button>
               </div>
               
-              <div className="flex gap-2 mb-4">
+              <div className="flex flex-col md:flex-row gap-2 mb-4">
                 <input
                   type="text"
                   placeholder="Server name"
@@ -518,7 +545,7 @@ export default function ChatbotApp() {
                 />
                 <button
                   onClick={addMCPServer}
-                  className="bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 transition flex items-center gap-1.5"
+                  className="bg-white text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 transition flex items-center justify-center gap-1.5"
                 >
                   <Plus className="w-4 h-4" />
                   Add
@@ -550,18 +577,19 @@ export default function ChatbotApp() {
           </div>
         )}
 
+        {/* Messages */}
         <div className="flex-1 overflow-y-auto">
-          <div className="max-w-3xl mx-auto px-6 py-8">
+          <div className="max-w-3xl mx-auto px-4 md:px-6 py-4 md:py-8">
             {messages.length === 0 ? (
               <div className="text-center mt-20">
                 <NaturaLogo className="h-12 w-12 text-white mx-auto mb-4 opacity-20" />
                 <p className="text-xl text-gray-400 mb-2">How can I help you today?</p>
               </div>
             ) : (
-              <div className="space-y-6">
+              <div className="space-y-4 md:space-y-6">
                 {messages.map((msg, idx) => (
                   <div key={idx} className="group">
-                    <div className="flex gap-4">
+                    <div className="flex gap-3 md:gap-4">
                       <div className="flex-shrink-0">
                         {msg.role === 'user' ? (
                           <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-black text-sm font-semibold">
@@ -573,11 +601,11 @@ export default function ChatbotApp() {
                           </div>
                         )}
                       </div>
-                      <div className="flex-1 pt-1">
+                      <div className="flex-1 pt-1 min-w-0">
                         <div className="text-sm font-semibold text-white mb-1">
                           {msg.role === 'user' ? 'You' : 'Natura AI'}
                         </div>
-                        <div className="text-white whitespace-pre-wrap leading-relaxed">
+                        <div className="text-white whitespace-pre-wrap leading-relaxed break-words text-sm md:text-base">
                           {msg.content}
                         </div>
                       </div>
@@ -586,7 +614,7 @@ export default function ChatbotApp() {
                 ))}
                 {sending && (
                   <div className="group">
-                    <div className="flex gap-4">
+                    <div className="flex gap-3 md:gap-4">
                       <div className="flex-shrink-0">
                         <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
                           <NaturaLogo className="h-5 w-5 text-black" />
@@ -605,8 +633,9 @@ export default function ChatbotApp() {
           </div>
         </div>
 
-        <div className="border-t border-zinc-800 bg-black flex-shrink-0">
-          <div className="max-w-3xl mx-auto px-6 py-4">
+        {/* Input */}
+        <div className="border-t border-zinc-800 bg-black flex-shrink-0 safe-area-bottom">
+          <div className="max-w-3xl mx-auto px-4 md:px-6 py-3 md:py-4">
             <div className="relative bg-zinc-900 border border-zinc-700 rounded-2xl focus-within:border-zinc-600 transition">
               <textarea
                 ref={textareaRef}
@@ -616,23 +645,31 @@ export default function ChatbotApp() {
                 placeholder="Message Natura AI..."
                 disabled={sending}
                 rows={1}
-                className="w-full bg-transparent border-0 px-4 py-4 pr-12 text-white placeholder-gray-500 focus:outline-none resize-none max-h-48 disabled:opacity-50"
+                className="w-full bg-transparent border-0 px-4 py-3 md:py-4 pr-12 text-white placeholder-gray-500 focus:outline-none resize-none max-h-32 md:max-h-48 disabled:opacity-50 text-sm md:text-base"
                 style={{ minHeight: '24px' }}
               />
               <button
                 onClick={sendMessage}
                 disabled={sending || !input.trim()}
-                className="absolute right-3 bottom-3 bg-white text-black p-2 rounded-lg hover:bg-gray-200 transition disabled:opacity-30 disabled:cursor-not-allowed"
+                className="absolute right-2 md:right-3 bottom-2 md:bottom-3 bg-white text-black p-2 rounded-lg hover:bg-gray-200 transition disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 <Send className="w-4 h-4" />
               </button>
             </div>
-            <p className="text-xs text-gray-500 text-center mt-3">
+            <p className="text-xs text-gray-500 text-center mt-2 md:mt-3">
               Natura AI can make mistakes. Check important info.
             </p>
           </div>
         </div>
       </div>
+
+      {/* Overlay per chiudere sidebar su mobile */}
+      {isMobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
     </div>
   );
 }
