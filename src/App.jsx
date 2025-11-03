@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-// Iconcine locali al posto di lucide-react
+// Iconcine locali al posto di lucide-react (lucide-react dava errore nel deploy)
 const Icon = ({ children, className }) => (
   <span className={className}>{children}</span>
 );
@@ -10,7 +10,7 @@ const Plus = (props) => <Icon {...props}>＋</Icon>;
 const Settings = (props) => <Icon {...props}>⚙️</Icon>;
 const LogOut = (props) => <Icon {...props}>⇦</Icon>;
 const Loader2 = ({ className }) => (
-  <span className={className}>⟳</span>   // puoi aggiungere "animate-spin" se vuoi animarla
+  <span className={className}>⟳</span>   // aggiungere "animate-spin" se vuoi animarla
 );
 const X = (props) => <Icon {...props}>✕</Icon>;
 const Trash2 = (props) => <Icon {...props}>🗑️</Icon>;
