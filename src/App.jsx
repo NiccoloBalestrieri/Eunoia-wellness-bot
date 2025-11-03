@@ -1,5 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Send, Plus, Settings, LogOut, Loader2, X, Trash2 } from 'lucide-react';
+
+// Iconcine locali al posto di lucide-react
+const Icon = ({ children, className }) => (
+  <span className={className}>{children}</span>
+);
+
+const Send = (props) => <Icon {...props}>➤</Icon>;
+const Plus = (props) => <Icon {...props}>＋</Icon>;
+const Settings = (props) => <Icon {...props}>⚙️</Icon>;
+const LogOut = (props) => <Icon {...props}>⇦</Icon>;
+const Loader2 = ({ className }) => (
+  <span className={className}>⟳</span>   // puoi aggiungere "animate-spin" se vuoi animarla
+);
+const X = (props) => <Icon {...props}>✕</Icon>;
+const Trash2 = (props) => <Icon {...props}>🗑️</Icon>;
 
 const API_URL = 'https://nicbl.niccolobalestrieri2.workers.dev';
 
