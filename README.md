@@ -19,9 +19,6 @@
   </video>
 </div>
 
-
-
-
 ---
 
 ## 🎯 Project Vision  
