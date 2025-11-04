@@ -1,101 +1,3 @@
-<div align="center">
-
-# 🌿 Natura AI – Digital Wellness Coach
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-![React](https://img.shields.io/badge/React-18--LTS-61DAFB?logo=react&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?logo=tailwindcss&logoColor=white)
-![Cloudflare Workers](https://img.shields.io/badge/Cloudflare_Workers-F38020?logo=cloudflare&logoColor=white)
-![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white)
-
-</div>
-
----
-
-## 🎥 Demo  
-
-<div align="center">
-
-  <video src="https://github.com/user-attachments/assets/941ecc20-3a4e-48a6-b9bc-f5d90ede12d3" width="600" controls>
-  </video>
-</div>
-
----
-
-## 🎯 Project Vision  
-
-In a world overloaded with screens and distractions, **Natura AI** redefines digital interaction:  
-
-> Let technology serve **you**, not consume you.
-
-This prototype demonstrates a human-centred AI assistant focused on **digital wellness**, powered entirely by free, serverless technologies.
-
-A key design choice is the use of a **dedicated MCP (Model Context Protocol) server**, deployed as a separate Cloudflare Worker called **Wellness Coach**.  
-This separation makes tools:
-
-- **Reusable** by other clients and apps, not only this chatbot  
-- **Composable** (you can plug multiple MCP servers into the same chat UI)  
-- **Safer & easier to iterate** (tools evolve independently from the LLM backend)
-
----
-
-## 🏗 Features Overview  
-
-- 🔐 **Authentication via Supabase** – email/password login, per-user storage.  
-- 💬 **Chat Interface** – persistent multi-session messaging with automatic scroll and local storage per user.  
-- 🧩 **MCP Servers Panel** – add/remove external tool servers dynamically from the UI.  
-- ⚙️ **Dynamic Tool Invocation** – messages containing specific keywords trigger direct tool calls instead of plain LLM processing.  
-
-- 🌱 **Dedicated Wellness Coach MCP Server (Cloudflare Worker)**  
-  - Implemented as a **separate Cloudflare Worker**, designed purely as an **MCP tool server**.  
-  - Exposes simple HTTP endpoints that the chatbot calls via MCP.  
-  - Any MCP-compatible client can reuse this server — not just this project.
-
-  Available endpoints/tools:
-
-  - `/screen_time_reminder` → screen-time awareness and break suggestions  
-  - `/digital_detox_tip` → small digital detox actions you can apply immediately  
-  - `/mindfulness_exercise` → short guided exercises to reset your attention  
-  - `/focus_mode` → Pomodoro-style focus timer logic  
-  - `/human_connection_suggestion` → nudges towards real-world human connection  
-
-- 🧠 **Fallback LLM Mode** – powered by Cloudflare’s `@cf/meta/llama-3.1-8b-instruct`.  
-- ☁️ **100 % Serverless Architecture** – Cloudflare Workers + Cloudflare Pages + Supabase free tier.  
-
-Thanks to this architecture, **any MCP server that exposes compatible endpoints can be plugged into the chat and immediately start working inside this chatbot**.
-
----
-
-## 🧰 Technology Stack  
-
-| Layer | Technology | Purpose |
-|-------|------------|---------|
-| **Frontend** | React 18 + Vite | UI/UX chat application |
-| **Styling** | Tailwind CSS | Responsive minimal design |
-| **Chat Orchestrator** | Cloudflare Worker (`nicbl`) | Chat API, routing & MCP orchestration |
-| **Dedicated Tool Server** | Cloudflare Worker (`wellness-coach`) | MCP tools for digital wellness |
-| **Database / Auth** | Supabase (PostgreSQL + Auth API) | Stores users + MCP servers |
-| **AI Engine** | Cloudflare AI Gateway (Llama 3.1 8B) | Natural language responses |
-| **Tool Protocol** | MCP (Model Context Protocol) | External tool integration |
-
----
-
-## 🖼 Architecture Diagram  
-
-![Architecture Diagram](docs/architecture-diagram.png)  
-
-```
-User (React Frontend)
-        ⇩
-Backend Worker (Cloudflare)
-        ⇩
- ┌───────────────┐
- │  Wellness MCP │
- │  Other MCPs   │
- └───────────────┘
-        ⇩
-     Supabase DB
-```
 
 ---
 
@@ -158,6 +60,23 @@ The chatbot then becomes a **hub of specialised agents** rather than a single mo
 
 ---
 
+## 🧩 Keywords Reference – How to Test the Wellness Coach  
+
+Below is a quick reference list of **trigger phrases** you can use to test each endpoint of the Wellness Coach MCP server.
+
+| Intent | Example Phrases | Expected Response |
+|--------|-----------------|-------------------|
+| 💤 Take a break | “I’m tired”, “Need a pause”, “Should I rest?” | Screen-time reminder |
+| 🧘 Mindfulness | “Breathe with me”, “Mindfulness exercise”, “Help me relax” | Guided breathing text |
+| 🔋 Digital detox | “Give me a tip”, “Detox from phone”, “Digital detox suggestion” | Detox or focus tip |
+| ⏱ Focus mode | “Start pomodoro”, “Focus time”, “I want to concentrate” | Pomodoro timer message |
+| 🤝 Social wellness | “Feel lonely”, “I miss people”, “Connect with friends” | Human connection suggestion |
+
+When no MCP server is connected, the chatbot falls back to a natural LLM answer powered by Llama 3.  
+When the MCP Wellness Coach is connected, you’ll see `[MCP TEST]` prefixed to tool-based replies.
+
+---
+
 ## 🚀 Deployment (Free Tier)  
 
 ### 1️⃣ Backend Chat Orchestrator Worker  
@@ -217,6 +136,7 @@ Then, in the web app:
    ```text
    Name: Wellness Coach
    URL:  https://wellness-coach.yourdomain.workers.dev
+
 3. Save — the frontend now knows about this MCP agent.
 4. Send a message like “I’m tired” or “Give me a detox tip” → the orchestrator Worker routes it to the Wellness Coach MCP server and returns a tool-generated response 🌱
 
