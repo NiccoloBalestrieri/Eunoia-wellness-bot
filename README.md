@@ -15,7 +15,8 @@
 ## 🎥 Demo  
 
 <div align="center">
-  <video src="https://github.com/user-attachments/assets/85ca0262-41fd-4798-802e-2ac9157cb58d" width="600" controls>
+
+  <video src="https://github.com/user-attachments/assets/941ecc20-3a4e-48a6-b9bc-f5d90ede12d3" width="600" controls>
   </video>
 </div>
 
