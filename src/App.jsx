@@ -426,7 +426,7 @@ export default function ChatbotApp() {
   }
 
   return (
-    <div className="h-screen overflow-hidden bg-black text-white flex flex-col md:flex-row">
+    <div className="flex flex-col min-h-[100dvh] bg-black text-white md:flex-row">
       {/* Mobile Header */}
       <div className="md:hidden flex items-center justify-between p-4 border-b border-zinc-800">
         <div className="flex items-center gap-3">
@@ -578,7 +578,7 @@ export default function ChatbotApp() {
         )}
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto px-4 pb-32 scroll-smooth">
           <div className="max-w-3xl mx-auto px-4 md:px-6 py-4 md:py-8">
             {messages.length === 0 ? (
               <div className="text-center mt-20">
