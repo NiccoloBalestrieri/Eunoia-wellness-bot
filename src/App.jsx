@@ -71,7 +71,7 @@ export default function ChatbotApp() {
       document.head.appendChild(link);
     }
     link.href = url;
-    document.title = 'Natura AI';
+    document.title = 'EunoAI';
     
     return () => URL.revokeObjectURL(url);
   }, []);
@@ -642,7 +642,7 @@ export default function ChatbotApp() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Message Natura AI..."
+                placeholder="Message EunoAI..."
                 disabled={sending}
                 rows={1}
                 className="w-full bg-transparent border-0 px-4 py-3 md:py-4 pr-12 text-white placeholder-gray-500 focus:outline-none resize-none max-h-32 md:max-h-48 disabled:opacity-50 text-sm md:text-base"
