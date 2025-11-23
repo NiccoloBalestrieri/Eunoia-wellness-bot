@@ -84,7 +84,8 @@ app.post('/execute', (req, res) => {
 const PORT = 3001;
 app.listen(PORT, () => {
   console.log(`🚀 MCP Test Server running on http://localhost:${PORT}`);
-  console.log(`📡 Add this URL to your Natura AI MCP servers:`);
+  console.log(`📡 Add this URL to your EunoAI MCP servers:`);
   console.log(`   Name: Test Calculator`);
   console.log(`   URL: http://localhost:${PORT}`);
+
 });
