@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌿 Natura AI – Digital Wellness Coach
+# 🌿 EunoAI – Digital Wellness Coach
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![React](https://img.shields.io/badge/React-18--LTS-61DAFB?logo=react&logoColor=white)
@@ -24,7 +24,7 @@
 
 ## 🎯 Project Vision  
 
-In a world overloaded with screens and distractions, **Natura AI** redefines digital interaction:  
+In a world overloaded with screens and distractions, **EnoAI** redefines digital interaction:  
 
 > Let technology serve **you**, not consume you.
 
