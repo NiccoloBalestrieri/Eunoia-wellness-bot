@@ -358,7 +358,7 @@ export default function ChatbotApp() {
             <div className="flex justify-center mb-6">
               <NaturaLogo className="h-16 w-16 text-white" />
             </div>
-            <h1 className="text-3xl font-semibold text-white mb-2">Welcome to Natura AI</h1>
+            <h1 className="text-3xl font-semibold text-white mb-2">Welcome to EunoAI</h1>
             <p className="text-gray-400">Log in or create your account to continue</p>
           </div>
 
@@ -431,7 +431,7 @@ export default function ChatbotApp() {
       <div className="md:hidden flex items-center justify-between p-4 border-b border-zinc-800">
         <div className="flex items-center gap-3">
           <NaturaLogo className="h-6 w-6 text-white" />
-          <span className="text-lg font-semibold">Natura AI</span>
+          <span className="text-lg font-semibold">EunoAI</span>
         </div>
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -448,7 +448,7 @@ export default function ChatbotApp() {
         <div className="p-4 border-b border-zinc-800">
           <div className="hidden md:flex items-center gap-3 mb-4">
             <NaturaLogo className="h-7 w-7 text-white" />
-            <span className="text-lg font-semibold">Natura AI</span>
+            <span className="text-lg font-semibold">EunoAI</span>
           </div>
           <button
             onClick={createNewChat}
@@ -603,7 +603,7 @@ export default function ChatbotApp() {
                       </div>
                       <div className="flex-1 pt-1 min-w-0">
                         <div className="text-sm font-semibold text-white mb-1">
-                          {msg.role === 'user' ? 'You' : 'Natura AI'}
+                          {msg.role === 'user' ? 'You' : 'EunoAI'}
                         </div>
                         <div className="text-white whitespace-pre-wrap leading-relaxed break-words text-sm md:text-base">
                           {msg.content}
@@ -621,7 +621,7 @@ export default function ChatbotApp() {
                         </div>
                       </div>
                       <div className="flex-1 pt-1">
-                        <div className="text-sm font-semibold text-white mb-1">Natura AI</div>
+                        <div className="text-sm font-semibold text-white mb-1">EunoAI</div>
                         <Loader2 className="w-4 h-4 animate-spin text-gray-400" />
                       </div>
                     </div>
@@ -657,7 +657,7 @@ export default function ChatbotApp() {
               </button>
             </div>
             <p className="text-xs text-gray-500 text-center mt-2 md:mt-3">
-              Natura AI can make mistakes. Check important info.
+              EunoAI can make mistakes. Check important info.
             </p>
           </div>
         </div>
