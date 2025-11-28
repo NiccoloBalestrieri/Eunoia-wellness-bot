@@ -14,7 +14,7 @@
 
 ## 🎥 Demo  
 
-(https://github.com/NiccoloBalestrieri/Eunoia-wellness-bot/blob/main/eunoAI.mp4)
+[(https://github.com/NiccoloBalestrieri/Eunoia-wellness-bot/blob/main/eunoAI.mp4)](https://github.com/user-attachments/assets/a1b43f77-0e99-448b-978f-cb3da818c02d)
 
 ---
 
