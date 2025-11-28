@@ -15,9 +15,9 @@
 ## 🎥 Demo  
 
 <div align="center">
-
-  <video src="https://github.com/user-attachments/assets/941ecc20-3a4e-48a6-b9bc-f5d90ede12d3" width="600" controls>
-  </video>
+  <a href="euonai.mp4">
+    <img src="thumbnail.png" width="600">
+  </a>
 </div>
 
 ---
