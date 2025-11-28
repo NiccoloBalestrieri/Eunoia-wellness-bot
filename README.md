@@ -15,7 +15,7 @@
 ## 🎥 Demo  
 
 <div align="center">
-  <a href="euonai.mp4">
+  <a href="eunoAI.mp4">
     <img src="thumbnail.png" width="600">
   </a>
 </div>
