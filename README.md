@@ -14,11 +14,7 @@
 
 ## 🎥 Demo  
 
-<div align="center">
-  <a href="eunoAI.mp4">
-    <img src="thumbnail.png" width="600">
-  </a>
-</div>
+(https://github.com/NiccoloBalestrieri/Eunoia-wellness-bot/blob/main/eunoAI.mp4)
 
 ---
 
